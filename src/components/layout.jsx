@@ -6,7 +6,7 @@ export default props => {
         <div>
             <header>
                 <h1>eCommerce CETAV TestCoder</h1>
-                <Nav links={[
+                <Nav additional={{target: 'cart', value: props.itemsQuantity}} links={[
                     { to: '/', title: 'store' },
                     { to: '/shopping-cart', title: 'cart' }
                 ]}/>

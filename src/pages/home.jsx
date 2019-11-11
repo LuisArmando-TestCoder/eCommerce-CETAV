@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import Layout from '../components/layout';
 import SoftProduct from '../components/soft-product';
-import addToCart from '../services/addToCart';
+import addTo from '../services/addTo';
 
 export default props => {
-    const [products, setProducts] = useState([]);
-    fetch('./products.json').then(r => r.json()).then(setProducts);
+    const [itemsQuantity, setItemsQuantity] = useState(props.cart.length);
+
     return (
-        <Layout>
+        <Layout itemsQuantity={itemsQuantity}>
             <h2>Store</h2>
-            {products.map((product, i) => <SoftProduct key={i} click={addToCart} {...product}/>)}
+            {props.products.map((product, i) => <SoftProduct key={i} click={() => {
+                if(!props.cart.find(p => p.id === product.id)) {
+                    addTo({array: props.cart, obj: product, name: 'cart'});
+                    setItemsQuantity(props.cart.length);
+                }
+            }} {...product}/>)}
         </Layout>
     );
 }

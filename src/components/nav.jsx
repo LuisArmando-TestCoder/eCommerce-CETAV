@@ -5,7 +5,17 @@ export default props => {
     return (
         <nav>
             <ul>
-                {props.links.map(({to, title}, i) => <li key={i}><Link to={to}>{title}</Link></li>)}
+                {props.links.map(({to, title}, i) => {
+                    return <li key={i}>
+                        <Link to={to}>{title}</Link>
+                        {
+                            title === props.additional.target ?
+                            <i>{props.additional.value}</i>
+                            :
+                            null
+                        }
+                    </li>
+                })}
             </ul>
         </nav>
     );
