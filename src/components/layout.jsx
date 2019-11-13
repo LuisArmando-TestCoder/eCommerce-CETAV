@@ -5,9 +5,7 @@ import Modal from './modal';
 export default props => {
     return (
         <div>
-            {props.modal ? <Modal 
-                buttons={props.modal.buttons}
-                message={props.modal.message}/> : null}
+            {props.modal && props.modal.show ? <Modal {...props.modal}/> : null}
             <header>
                 <h1>eCommerce CETAV TestCoder</h1>
                 <Nav additional={{target: 'cart', value: props.itemsQuantity}} links={[
