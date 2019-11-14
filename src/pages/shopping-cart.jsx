@@ -17,10 +17,7 @@ export default props => {
                 },
                 content: 'Finish',
             }
-        ],
-        additional: {
-            className: 'loading-checkout'
-        }
+        ]
     });
 
     products.forEach(product => !product.itemsAmount ? product.itemsAmount = 1 : null);

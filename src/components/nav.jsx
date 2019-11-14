@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default props => {
     return (
@@ -7,7 +7,7 @@ export default props => {
             <ul>
                 {props.links.map(({to, title}, i) => {
                     return <li key={i}>
-                        <Link to={to}>{title}</Link>
+                        <NavLink to={to}>{title}</NavLink>
                         {
                             title === props.additional.target ?
                             <i>{props.additional.value}</i>

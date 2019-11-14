@@ -1,7 +1,22 @@
+:root {
+    --highlight: #a22733;
+}
+
 * {
     box-sizing: border-box;
+    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Bebas Neue', cursive;
 }
 
 body {
+    background: #fff;
     margin: 0;
+}
+
+a {
+    color: inherit;
 }
