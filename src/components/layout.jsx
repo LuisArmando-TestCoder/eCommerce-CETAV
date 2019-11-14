@@ -13,7 +13,7 @@ export default props => {
         <div className='layout'>
             {props.modal && props.modal.show ? <Modal {...props.modal}/> : null}
             <header>
-                <h1>{title}</h1>
+                <h1 className={`layout__title ${ props.isHome ? '' : 'layout__title--small'}`}>{title}</h1>
                 <Nav additional={{target: 'cart', value: props.itemsQuantity}} links={[
                     { to: '/', title: 'store' },
                     { to: '/shopping-cart', title: 'cart' }

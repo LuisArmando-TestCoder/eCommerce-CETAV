@@ -30,7 +30,7 @@ export default props => {
     });
 
     return (
-        <Layout modal={modal} itemsQuantity={itemsQuantity}>
+        <Layout isHome={true} modal={modal} itemsQuantity={itemsQuantity}>
             <h2>Store</h2>
             <div className='products'>
                 {props.products.map((product, i) => <SoftProduct key={i} click={() => {
