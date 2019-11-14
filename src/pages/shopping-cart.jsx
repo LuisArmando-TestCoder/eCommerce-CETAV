@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 import CartProduct from '../components/cart-product';
 import movePropValue from '../services/movePropValue';
 import saveLocal from '../services/saveLocal';
+import './checkout.css';
 
 export default props => {
     const [products, setProducts] = useState(props.cart);
@@ -32,7 +33,21 @@ export default props => {
     }
     // https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260
     return (
-        <Layout modal={modal}>
+        <Layout modal={modal} itemsQuantity={props.cart.length}>
+            {products.length ?
+                <div className='checkout--sticky'>
+                    <div className='checkout--sticky__wrapper'>
+                        <i className='wrapper__info'>Subtotal: {' '}
+                            <b className='info__value'>{getSubtotal()}</b>
+                        </i>
+                        <button className='wrapper__btn' onClick={() => {
+                            modal.show = true;
+                            setModal({...modal});
+                        }}>Checkout</button>
+                    </div>
+                </div>
+            : null}
+
             <h2>Cart</h2>
             <div className='products'>
                 {products.map((product, i) => <CartProduct key={i}
@@ -43,16 +58,6 @@ export default props => {
                     increase={() => movePropValue({obj: product, name: 'itemsAmount', to: 1})}
                 {...product} />)}
             </div>
-            
-            {products.length ?
-                <div>
-                    <button onClick={() => {
-                        modal.show = true;
-                        setModal({...modal});
-                    }}>Checkout</button>
-                    <i>Subtotal: {getSubtotal()}</i>
-                </div>
-            : null}
         </Layout>
     );
 }

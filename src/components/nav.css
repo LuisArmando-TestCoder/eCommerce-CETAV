@@ -1,0 +1,46 @@
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.nav__links-list {
+    margin: 0;
+    list-style: none;
+    padding: 25px;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 0 10px -5px;
+}
+
+.links-list__item {
+    display: block;
+    position: relative;
+}
+
+.item__link {
+    transition: 0.35s;
+    padding: 0 15px;
+}
+
+.item__link:hover {
+    color: var(--highlight);
+}
+
+.item__additional {
+    background: var(--second-highlight);
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

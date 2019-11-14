@@ -1,0 +1,25 @@
+.details-product {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.details-product__title {
+    color: var(--highlight);
+    font-size: 84px;
+}
+
+.details-product__img {
+    width: 100%;
+    max-width: 480px;
+}
+
+.details-product__wrapper {
+    max-width: 420px;
+    padding-left: 25px;
+}
+
+.wrapper__paragraph {
+    font-size: 20px;
+}

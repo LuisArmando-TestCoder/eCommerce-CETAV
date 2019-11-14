@@ -1,16 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './nav.css';
 
 export default props => {
     return (
-        <nav>
-            <ul>
+        <nav className='nav'>
+            <ul className='nav__links-list'>
                 {props.links.map(({to, title}, i) => {
-                    return <li key={i}>
-                        <NavLink to={to}>{title}</NavLink>
+                    return <li className='links-list__item' key={i}>
+                        <NavLink className='item__link' to={to}>{title}</NavLink>
                         {
                             title === props.additional.target ?
-                            <i>{props.additional.value}</i>
+                            <sup className='item__additional'>{props.additional.value}</sup>
                             :
                             null
                         }

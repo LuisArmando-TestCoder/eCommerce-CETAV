@@ -1,6 +1,5 @@
 .products {
     overflow: hidden;
-    background: #888;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
@@ -8,6 +7,7 @@
 .products > div {
     padding: 25px;
     min-height: 540px;
+    background-color: var(--highlight);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -21,5 +21,6 @@
 
 .products > div:hover {
     box-shadow: inset 0 0 0 100px #fff;
+    text-shadow: 2px 1px #fff;
     color: var(--highlight);
 }

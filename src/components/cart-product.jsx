@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export default props => {
     return (
-        <div style={{backgroundImage: `url(${props.imageUrl})`}
-    }>
+        <div style={{backgroundImage: `url(${props.imageUrl})`}}>
             <NavLink to={`/product-details/${props.id}`}>
                 <h4>{props.name}</h4>
                 <b>Category ID: {props.categoryId}</b>
