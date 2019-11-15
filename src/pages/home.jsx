@@ -36,7 +36,7 @@ export default props => {
         <Layout isHome={true} modal={modal} itemsQuantity={itemsQuantity}>
             <h2>Store</h2>
             <Categories click={category => {
-                setProducts(props.products.filter(product => product.category === category));
+                setProducts(props.products.filter(product => new RegExp(category, 'gim').test(product.category)));
             }} list={props.products || []}/>
             <div className='products'>
                 {products.map((product, i) => <SoftProduct key={i} click={() => {
