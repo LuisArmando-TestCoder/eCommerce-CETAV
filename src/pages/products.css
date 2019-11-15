@@ -8,22 +8,24 @@
 .products > div {
     padding: 25px;
     min-height: 540px;
+    box-shadow: inset 0 0 250px -50px #333;
     background-color: var(--highlight);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    box-shadow: inset 0 0 400px -50px #000;
-    transition: 0.5s;
     display: flex;
     align-content: space-around;
     flex-wrap: wrap;
     cursor: pointer;
+    text-shadow: 2px 1px #f0f0f0;
+    color: var(--highlight);
+    transition: 2s;
 }
 
 .products > div:hover {
-    box-shadow: inset 0 0 0 100px #fff;
-    text-shadow: 2px 1px #fff;
-    color: var(--highlight);
+    transition: 0.5s;
+    box-shadow: inset 0 0 0 50px #f0f0f0;
+    text-shadow: 2px 1px #f0f0f0, 4px 2px var(--second-highlight);
 }
 
 .products a {

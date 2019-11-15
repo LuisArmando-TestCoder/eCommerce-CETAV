@@ -4,10 +4,10 @@ import Modal from './modal';
 import './layout.css';
 
 export default props => {
-    const title =  props.title || 'eCommerce CETAV';
+    const title =  props.title || <React.Fragment>E<strong>COMMERCE</strong></React.Fragment>;
     const titleTag = document.querySelector('title');
 
-    titleTag.innerText = title;
+    titleTag.innerText = props.title || 'E-COMMERCE';
 
     return (
         <div className='layout'>

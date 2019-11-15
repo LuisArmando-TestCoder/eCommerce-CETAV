@@ -1,0 +1,22 @@
+.categories {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.categories__item:nth-child(n+2) {
+    padding-left: 5px;
+}
+
+.item__btn {
+    background: transparent;
+    border: 0;
+    text-decoration: underline;
+    padding: 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.item__btn:hover {
+    color: var(--highlight);
+}

@@ -3,13 +3,14 @@ import Layout from '../components/layout';
 import CartProduct from '../components/cart-product';
 import movePropValue from '../services/movePropValue';
 import saveLocal from '../services/saveLocal';
+import getItemsSummation from '../services/getItemsSummation';
 import './checkout.css';
 
 export default props => {
     const [products, setProducts] = useState(props.cart);
     const [modal, setModal] = useState({
         show: false,
-        message: `Buying`,
+        message: 'Buying',
         buttons: [
             {
                 action() {
@@ -21,8 +22,6 @@ export default props => {
         ]
     });
 
-    products.forEach(product => !product.itemsAmount ? product.itemsAmount = 1 : null);
-
     function getSubtotal() {
         return products.length ? products.map(a => a.itemsAmount * a.price).reduce((a, b) => a + b) : 0;
     }
@@ -31,9 +30,9 @@ export default props => {
         setProducts([...props.cart]);
         saveLocal(products).in('cart');
     }
-    // https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260
+
     return (
-        <Layout modal={modal} itemsQuantity={props.cart.length}>
+        <Layout modal={modal} itemsQuantity={getItemsSummation(props.cart, 'itemsAmount')}>
             {products.length ?
                 <div className='checkout--sticky'>
                     <div className='checkout--sticky__wrapper'>

@@ -8,13 +8,22 @@
     font-family: 'Roboto', sans-serif;
 }
 
-h1, h2 {
-    font-family: 'Bebas Neue', cursive;
+*::selection {
+    background: var(--second-highlight);
+    color: var(--highlight);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background: #f0f0f0;
     margin: 0;
+}
+
+h1, h2, strong {
+    font-family: 'Bebas Neue', cursive;
 }
 
 a {

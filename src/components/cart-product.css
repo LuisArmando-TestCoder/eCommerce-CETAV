@@ -28,6 +28,7 @@
     color: var(--highlight);
     text-decoration: underline;
     cursor: pointer;
+    text-shadow: 0.25px 0.5px #fff;
 }
 
 .buttons-wrapper__delete:hover {

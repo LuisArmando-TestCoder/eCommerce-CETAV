@@ -3,12 +3,12 @@
 }
 
 .layout__title {
-    background: var(--highlight) url('https://images.pexels.com/photos/2973098/pexels-photo-2973098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background: var(--highlight) url('https://images.pexels.com/photos/1336873/pexels-photo-1336873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
     background-attachment: fixed;
     background-size: cover;
     text-align: center;
     padding: 25px 0;
-    font-size: 20vw;
+    font-size: 14vw;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -18,6 +18,11 @@
 .layout__title--small {
     font-size: 40px;
     text-align: left;
+    color: var(--highlight);
+}
+
+.layout__title strong {
+    background: var(--second-highlight);
     color: var(--highlight);
 }
 

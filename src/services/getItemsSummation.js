@@ -1,0 +1,1 @@
+export default (array, prop) => array.length ? array.map(object => object[prop]).reduce((a, b) => a + b) : 0;

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Layout from '../components/layout';
 import SoftProduct from '../components/soft-product';
+import Categories from '../components/categories';
 import addTo from '../services/addTo';
+import getItemsSummation from '../services/getItemsSummation';
 import './products.css';
 
 export default props => {
-    const [itemsQuantity, setItemsQuantity] = useState(props.cart.length);
+    const [products, setProducts] = useState(props.products);
+    const [itemsQuantity, setItemsQuantity] = useState(getItemsSummation(props.cart, 'itemsAmount'));
     const [modal, setModal] = useState({
         show: false,
         message: `¿Do you want to add this item to the cart?`,
@@ -13,7 +16,7 @@ export default props => {
             {
                 action() {
                     props.cart.pop();
-                    setItemsQuantity(props.cart.length);
+                    setItemsQuantity(getItemsSummation(props.cart, 'itemsAmount'));
                     modal.show = false;
                     setModal({...modal});
                 },
@@ -26,20 +29,21 @@ export default props => {
                 },
                 content: 'Add to cart',
             }
-        ],
+        ]
     });
 
     return (
         <Layout isHome={true} modal={modal} itemsQuantity={itemsQuantity}>
             <h2>Store</h2>
+            <Categories click={category => {
+                setProducts(props.products.filter(product => product.category === category));
+            }} list={props.products || []}/>
             <div className='products'>
-                {props.products.map((product, i) => <SoftProduct key={i} click={() => {
+                {products.map((product, i) => <SoftProduct key={i} click={() => {
                     modal.show = true;
                     setModal({...modal});
-                    if(!props.cart.find(p => p.id === product.id)) {
-                        addTo({array: props.cart, obj: product, name: 'cart'});
-                        setItemsQuantity(props.cart.length);
-                    }
+                    addTo({array: props.cart, obj: product, name: 'cart'});
+                    setItemsQuantity(getItemsSummation(props.cart, 'itemsAmount'));
                 }} {...product}/>)}
             </div>
         </Layout>

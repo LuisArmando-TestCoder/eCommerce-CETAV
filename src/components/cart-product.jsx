@@ -7,7 +7,7 @@ export default props => {
         <div className='cart-product' style={{backgroundImage: `url(${props.imageUrl})`}}>
             <NavLink to={`/product-details/${props.id}`}>
                 <h4>{props.name}</h4>
-                <b>Category ID: {props.categoryId}</b>
+                <b>Category: {props.category}</b>
             </NavLink>
             <div className='cart-product__buttons-wrapper'>
                 <div className='buttons-wrapper__wrap-item'>
