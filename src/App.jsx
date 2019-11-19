@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,10 +16,12 @@ export default () => {
     cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
   };
 
-  if(!products.length) fetch('./products.json').then(r => r.json()).then(data => {
-    data.forEach(product => globalState.products.push(product));
-    setProducts(JSON.parse(JSON.stringify(products)));
-  });
+  useEffect(() => {
+    fetch('./products.json').then(r => r.json()).then(data => {
+      data.forEach(product => globalState.products.push(product));
+      setProducts(JSON.parse(JSON.stringify(products)));
+    });
+  }, []);
 
   return (
     <Router>

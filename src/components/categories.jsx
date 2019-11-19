@@ -6,9 +6,9 @@ export default props => {
     return (
         <ul className='categories'>
             {
-                categories.map((category, i) => 
-                    <li className='categories__item'>
-                        <button className='item__btn' key={i} onClick={e => props.click(category, e)}>{category || 'all'}</button>
+                categories.map((category, i) =>
+                    <li key={i} className='categories__item'>
+                        <button className='item__btn' onClick={e => props.click(category, e)}>{category || 'all'}</button>
                     </li>
                 )
             }
