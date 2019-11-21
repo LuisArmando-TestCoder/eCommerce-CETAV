@@ -13,10 +13,9 @@
     display: flex;
     flex-wrap: wrap;
     align-content: space-evenly;
-    background: #f8f8f8fe;
-    /* outline: calc(100vw + 100vh) solid #0008; */
+    background: -webkit-linear-gradient(top, #fff, #fffd);
     box-sizing: content-box;
-    box-shadow: 0 0 100px #000, inset 0 0 50px #e5e5e5;
+    box-shadow: 0 0 100px -10px #000;
     border-radius: 5px;
 }
 
@@ -29,7 +28,7 @@
     background: #0000;
     top: var(--move);
     left: var(--move);
-    border: calc(var(--move) * -1) solid #0008;
+    border: calc(var(--move) * -1) solid var(--soft-highlight);
     z-index: -1;
 }
 
