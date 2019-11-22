@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 import DetailsProduct from '../components/details-product';
 import addTo from '../services/addTo';
 import getItemsSummation from '../services/getItemsSummation';
+import isObject from '../services/isObject';
 
 export default props => {
     const [itemsQuantity, setItemsQuantity] = useState(getItemsSummation(props.cart, 'itemsAmount'));
@@ -14,7 +15,12 @@ export default props => {
             {
                 product ?
                 <DetailsProduct {...product} click={() => {
-                    addTo({array: props.cart, obj: product, name: 'cart'});
+                    if (isObject(product).in(props.cart)) {
+                        // when the the product is already in the cart 
+                        // just raise the amount of items in that product
+                        const index = isObject(product).where(props.cart);
+                        props.cart[index].itemsAmount++;
+                    } else addTo({array: props.cart, obj: product, name: 'cart'});
                     setItemsQuantity(getItemsSummation(props.cart, 'itemsAmount'));
                 }}/>
                 : null

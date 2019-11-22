@@ -51,7 +51,10 @@ export default props => {
             <div className='products'>
                 {products.map((product, i) => <CartProduct key={i}
                     trigger={saveChanges}
-                    deleteFrom={() => props.cart.splice(i, 1)}
+                    deleteFrom={() => {
+                        props.cart[i].itemsAmount = 1;
+                        props.cart.splice(i, 1);
+                    }}
                     itemsAmount={products[i].itemsAmount}
                     decrease={() => movePropValue({obj: product, name: 'itemsAmount', to: -1})}
                     increase={() => movePropValue({obj: product, name: 'itemsAmount', to: 1})}
