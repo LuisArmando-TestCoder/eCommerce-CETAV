@@ -1,10 +1,4 @@
 const actions = action => ({
-    'PRODUCTS'() {
-        return action.products;
-    },
-    'SHOPPING_CART'() {
-        return action.cart;
-    },
     'NOT_FOUND_FEELING'() {
         return action.feeling;
     }
