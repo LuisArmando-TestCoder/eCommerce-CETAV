@@ -10,23 +10,23 @@ import './checkout.css';
 
 export default props => {
     const [products, setProducts] = useState(props.cart);
-    const product = {
+    const [checkoutProduct, setCheckoutProduct] = useState({
         name: 'Ecommerce products',
         price: getSubtotal(),
         description: 'ecommerce clothes'
-    };
+    });
     const [modal, setModal] = useState({
         show: false,
         message: 'Buy every item in cart',
         children: (<StripeCheckout stripeKey="pk_test_rqlF5WYlPXEKcONrl1MqUFte00ZZB9qxgQ"
                                     token={(token, addresses) => {
-                                        checkout(token, addresses, product);
+                                        checkout(token, addresses, checkoutProduct);
                                         props.cart.splice(0, Infinity);
                                         setProducts([...props.cart]);
                                         modal.show = false;
                                         setModal({...modal});
                                     }}
-                                    amount={getSubtotal() * 100}
+                                    amount={checkoutProduct.price * 100}
                                     name="Ecommerce products"
                                     billingAddress
                                     shippingAddress
@@ -49,6 +49,8 @@ export default props => {
     function saveChanges() {
         setProducts([...props.cart]);
         saveLocal(products).in('cart');
+        checkoutProduct.price = getSubtotal();
+        setCheckoutProduct({...checkoutProduct});
     }
 
     return (
