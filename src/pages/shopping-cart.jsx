@@ -1,16 +1,30 @@
 import React, { useState } from 'react';
+import StripeCheckout from "react-stripe-checkout";
 import Layout from '../components/layout';
 import CartProduct from '../components/cart-product';
 import movePropValue from '../services/movePropValue';
 import saveLocal from '../services/saveLocal';
 import getItemsSummation from '../services/getItemsSummation';
+import checkout from '../services/checkout';
 import './checkout.css';
 
 export default props => {
     const [products, setProducts] = useState(props.cart);
+    const product = {
+        name: 'Ecommerce products',
+        price: getSubtotal(),
+        description: 'ecommerce clothes'
+    };
     const [modal, setModal] = useState({
         show: false,
         message: 'Buying',
+        children: (<StripeCheckout stripeKey="pk_test_rqlF5WYlPXEKcONrl1MqUFte00ZZB9qxgQ"
+                                    token={(token, addresses) => checkout(token, addresses, product)}
+                                    amount={getSubtotal() * 100}
+                                    name="Ecommerce products"
+                                    billingAddress
+                                    shippingAddress
+                    />),
         buttons: [
             {
                 action() {

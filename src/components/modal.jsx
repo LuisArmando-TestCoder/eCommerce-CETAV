@@ -5,6 +5,7 @@ export default props => {
     return (
         <div className='modal'>
             <p className='modal__message'>{props.message}</p>
+            <div>{props.children}</div>
             <div className='modal__buttons-wrapper'>
                 {
                     props.buttons.map((btn, i) => 
