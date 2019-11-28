@@ -57,7 +57,7 @@ export default props => {
                 <div className='checkout--sticky'>
                     <div className='checkout--sticky__wrapper'>
                         <i className='wrapper__info'>Subtotal: {' '}
-                            <b className='info__value'>{getSubtotal()}</b>
+                            <b className='info__value'>${getSubtotal()}</b>
                         </i>
                         <button className='wrapper__btn' onClick={() => {
                             modal.show = true;
