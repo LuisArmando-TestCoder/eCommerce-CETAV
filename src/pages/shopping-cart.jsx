@@ -17,9 +17,15 @@ export default props => {
     };
     const [modal, setModal] = useState({
         show: false,
-        message: 'Buying',
+        message: 'Buy every item in cart',
         children: (<StripeCheckout stripeKey="pk_test_rqlF5WYlPXEKcONrl1MqUFte00ZZB9qxgQ"
-                                    token={(token, addresses) => checkout(token, addresses, product)}
+                                    token={(token, addresses) => {
+                                        checkout(token, addresses, product);
+                                        props.cart.splice(0, Infinity);
+                                        setProducts([...props.cart]);
+                                        modal.show = false;
+                                        setModal({...modal});
+                                    }}
                                     amount={getSubtotal() * 100}
                                     name="Ecommerce products"
                                     billingAddress
